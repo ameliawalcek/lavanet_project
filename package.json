@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cosmjs/stargate": "^0.31.0",
+    "@lavanet/lava-sdk": "^0.16.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
