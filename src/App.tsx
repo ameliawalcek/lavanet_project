@@ -1,6 +1,6 @@
 import TopChainsTable from "./components/ChainsTable";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div>
       <TopChainsTable />
