@@ -5,7 +5,7 @@ import { MsgRelayPayment } from "@lavanet/lava-sdk/bin/src/codec/pairing/tx";
 import Loader from "./Loader";
 
 // Define constants
-const MAX_BLOCKS = 20; // Maximum number of blocks to fetch
+const BLOCKS_FETCH_LIMIT = 20; // Maximum number of blocks to fetch
 const MESSAGE_TYPE = "/lavanet.lava.pairing.MsgRelayPayment"; // Type of messages to process
 
 // Define interface for chain data
@@ -37,7 +37,7 @@ const ChainsTable: React.FC = () => {
     );
     const blockPromises = blockHeights.map((height) => client.getBlock(height));
     const blocks = await Promise.all(blockPromises);
-    return blocks.slice(-MAX_BLOCKS); // Fetch a maximum of MAX_BLOCKS blocks
+    return blocks.slice(-BLOCKS_FETCH_LIMIT); // Fetch a maximum of BLOCKS_FETCH_LIMIT blocks
   };
 
   // Process relay data from blocks
@@ -111,7 +111,7 @@ const ChainsTable: React.FC = () => {
           const startHeight =
             prevBlockHeightRef.current !== 0
               ? prevBlockHeightRef.current
-              : Math.max(0, currentBlockHeight - MAX_BLOCKS); // Fetch data for the last MAX_BLOCKS blocks
+              : Math.max(0, currentBlockHeight - BLOCKS_FETCH_LIMIT); // Fetch data for the last BLOCKS_FETCH_LIMIT blocks
           const blocks = await fetchBlocks(
             client,
             startHeight,
@@ -148,7 +148,7 @@ const ChainsTable: React.FC = () => {
 
   return (
     <div>
-      <h2>Top Chains by Number of Relays in the Last {MAX_BLOCKS} Blocks</h2>
+      <h2>Top Chains by Number of Relays in the Last {BLOCKS_FETCH_LIMIT} Blocks</h2>
       {isLoading && topChains.length === 0 ? (
         <Loader />
       ) : (
