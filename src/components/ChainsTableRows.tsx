@@ -6,7 +6,7 @@ interface ChainsTableRowsProps {
 
 const ChainsTableRows: React.FC<ChainsTableRowsProps> = ({ topChains }) => {
   return (
-    <div className="w-full grid grid-cols-1 sm:px-10 px-5 font-extrabold">
+    <div className="w-full grid grid-cols-1 sm:px-10 px-5 font-extrabold ">
       {topChains.map((chain, index) => (
         <div
           key={index}
@@ -18,7 +18,7 @@ const ChainsTableRows: React.FC<ChainsTableRowsProps> = ({ topChains }) => {
               : index === 2
               ? "bg-yellow-100"
               : "bg-white"
-          } mt-2 mb-2 grid grid-cols-3 rounded-lg sm:px-20 px-2 py-5`}
+          } mt-2 mb-2 grid grid-cols-3 rounded-lg sm:px-20 px-2 py-5 blue-glassmorphism-sm`}
         >
           <div className={`pl-10 ${index < 3 ? "text-white" : "text-black"} `}>
             {index + 1}

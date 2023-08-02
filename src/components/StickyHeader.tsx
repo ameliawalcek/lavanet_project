@@ -11,7 +11,7 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({
 }) => {
   return (
     <div
-      className="sticky top-0 z-10 bg-primary"
+      className="sticky top-0 z-10 bg-primary blue-glassmorphism"
       style={{ borderRadius: "0px 0px 50px 50px" }}
     >
       <div className="w-[100%] bg-primary sm:py-10 py-5 px-10 text-center">
