@@ -1,8 +1,8 @@
-# 🌋Lava Protocol Blockchain Leaderboard
+# Lava Protocol Blockchain Leaderboard 🌋
 
 Welcome to the Lava Protocol Blockchain Leaderboard! This web application showcases the top 10 chains on Lava by the number of relays passed in the Lava Blockchain over the last 20 blocks. It offers an engaging and interactive way to observe the leading chains in terms of relay activity.
 
-## Live Leaderboard
+## 🏆Live Leaderboard
 
 Explore the <a href="https://lava-blockchain-leaderboard.netlify.app/" target="_blank">Lava Blockchain Leaderboard</a> live, featuring a responsive design for seamless access across devices.
 
@@ -49,7 +49,7 @@ npm run dev
 
 Upon launching the app, you'll immediately observe a list of the leading chains based on the relay count within the most recent 20 blocks. The data refreshes in real-time as new blocks are added to the Lava Blockchain.
 
-## Contributing
+## 🤝Contributing
 
 I enthusiastically welcome contributions to the Lava Protocol Blockchain Leaderboard. To contribute, kindly fork this repository, implement your enhancements, and submit a pull request. Whether you're improving existing features or introducing new ones, your efforts are greatly appreciated!
 
