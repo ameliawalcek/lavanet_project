@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { StargateClient, Block } from "@cosmjs/stargate";
 import { Tx } from "cosmjs-types/cosmos/tx/v1beta1/tx";
 import { MsgRelayPayment } from "@lavanet/lava-sdk/bin/src/codec/pairing/tx";
@@ -18,12 +18,12 @@ export interface ChainData {
 
 // ChainsTable component
 const TopChainsTable: React.FC = () => {
-  // // Refs for tracking previous block height and update status
+  // Refs for tracking previous block height and update status
   const prevBlockHeightRef = useRef<number>(0); // Stores the previous block height
   const isUpdatingRef = useRef<boolean>(false); // Flag to prevent concurrent updates\
   const blockRecordRef = useRef<number[]>([]);
 
-  // // State for top chains and loading indicator
+  // State for top chains and loading indicator
   const [topChains, setTopChains] = useState<ChainData[]>([]); // Holds the top chains data
   const [isLoading, setIsLoading] = useState<boolean>(true); // Loading indicator
   const [isUpdatingBlocks, setIsUpdatingBlocks] = useState<boolean>(false);
@@ -160,7 +160,7 @@ const TopChainsTable: React.FC = () => {
     a.length === b.length &&
     a.every((chain, index) => chain.specId === b[index].specId);
 
-    return (
+  return (
     <div>
       <StickyHeader
         topChains={topChains}
@@ -169,8 +169,8 @@ const TopChainsTable: React.FC = () => {
         blockRecordRef={blockRecordRef}
       />
       {isLoading && topChains.length === 0 ? (
-        <div className='w-full flex justify-center p-10' >
-        <Loader size={100}/>
+        <div className="w-full flex justify-center p-10">
+          <Loader size={100} />
         </div>
       ) : (
         <ChainsTableRows topChains={topChains} />
