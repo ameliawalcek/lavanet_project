@@ -4,7 +4,7 @@ Welcome to the Lava Protocol Blockchain Leaderboard! This web application showca
 
 ## Live Leaderboard
 
-Explore the [Lava Blockchain Leaderboard](https://lava-blockchain-leaderboard.netlify.app/) live, featuring a responsive design for seamless access across devices.
+Explore the <a href="https://lava-blockchain-leaderboard.netlify.app/" target="_blank">Lava Blockchain Leaderboard</a> live, featuring a responsive design for seamless access across devices.
 
 ## Background
 
