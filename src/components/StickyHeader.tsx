@@ -1,13 +1,19 @@
+import Loader from "./Loader";
 import { ChainData } from "./TopChainsTable";
+import { MutableRefObject } from "react";
 
 interface StickyHeaderProps {
   topChains: ChainData[];
   blockLimit: number;
+  isUpdatingBlocks: boolean;
+  blockRecordRef: MutableRefObject<number[]>;
 }
 
 const StickyHeader: React.FC<StickyHeaderProps> = ({
   topChains,
   blockLimit,
+  isUpdatingBlocks,
+  blockRecordRef,
 }) => {
   return (
     <div
@@ -24,7 +30,7 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({
       </div>
       <div>
         <div
-          className="bg-primary flex justify-evenly items-center sm:pb-20 pb-5"
+          className="bg-primary flex justify-evenly items-center"
           style={{ borderRadius: "0px 0px 50px 50px" }}
         >
           <div className="relative bg-primary">
@@ -53,6 +59,16 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({
           </div>
         </div>
       </div>
+      {isUpdatingBlocks && topChains.length !== 0 ? (
+        <div className="flex justify-center items-center h-[100px]">
+          <Loader size={60}/>
+        </div>
+      ) : (
+        <div className="flex justify-center items-center flex-col h-[100px]">
+          <div className="text-secondary">Processed blocks from</div>
+          <div className="text-secondary">{blockRecordRef.current[0]} to {blockRecordRef.current[1]}</div>
+        </div>
+      )}
     </div>
   );
 };

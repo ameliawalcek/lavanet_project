@@ -18,13 +18,15 @@ export interface ChainData {
 
 // ChainsTable component
 const TopChainsTable: React.FC = () => {
-  // Refs for tracking previous block height and update status
+  // // Refs for tracking previous block height and update status
   const prevBlockHeightRef = useRef<number>(0); // Stores the previous block height
-  const isUpdatingRef = useRef<boolean>(false); // Flag to prevent concurrent updates
+  const isUpdatingRef = useRef<boolean>(false); // Flag to prevent concurrent updates\
+  const blockRecordRef = useRef<number[]>([]);
 
-  // State for top chains and loading indicator
+  // // State for top chains and loading indicator
   const [topChains, setTopChains] = useState<ChainData[]>([]); // Holds the top chains data
   const [isLoading, setIsLoading] = useState<boolean>(true); // Loading indicator
+  const [isUpdatingBlocks, setIsUpdatingBlocks] = useState<boolean>(false);
 
   // Fetch blocks from the blockchain
   const fetchBlocks = async (
@@ -33,6 +35,14 @@ const TopChainsTable: React.FC = () => {
     endHeight: number
   ): Promise<Block[]> => {
     console.log(`Fetching blocks ${startHeight} -> ${endHeight}`);
+
+    // Recorded to update header
+    if (blockRecordRef.current.length === 0) {
+      blockRecordRef.current = [startHeight, endHeight];
+    } else {
+      blockRecordRef.current[1] = endHeight;
+    }
+
     const blockHeights = Array.from(
       { length: endHeight - startHeight + 1 },
       (_, i) => startHeight + i
@@ -110,10 +120,12 @@ const TopChainsTable: React.FC = () => {
 
         if (prevBlockHeightRef.current !== currentBlockHeight) {
           console.log("Fetching new block data");
+          setIsUpdatingBlocks(true);
           const startHeight =
             prevBlockHeightRef.current !== 0
               ? prevBlockHeightRef.current
               : Math.max(0, currentBlockHeight - BLOCKS_FETCH_LIMIT); // Fetch data for the last BLOCKS_FETCH_LIMIT blocks
+
           const blocks = await fetchBlocks(
             client,
             startHeight,
@@ -121,7 +133,7 @@ const TopChainsTable: React.FC = () => {
           );
           const relays = processRelayData(blocks, MESSAGE_TYPE);
           const newTopChains = calculateTopChains(relays);
-
+          setIsUpdatingBlocks(false);
           if (!compareChains(newTopChains, topChains)) {
             console.log("Updating leaderboard");
             setTopChains(newTopChains);
@@ -148,11 +160,18 @@ const TopChainsTable: React.FC = () => {
     a.length === b.length &&
     a.every((chain, index) => chain.specId === b[index].specId);
 
-  return (
+    return (
     <div>
-      <StickyHeader topChains={topChains} blockLimit={BLOCKS_FETCH_LIMIT} />
+      <StickyHeader
+        topChains={topChains}
+        blockLimit={BLOCKS_FETCH_LIMIT}
+        isUpdatingBlocks={isUpdatingBlocks}
+        blockRecordRef={blockRecordRef}
+      />
       {isLoading && topChains.length === 0 ? (
-        <Loader />
+        <div className='w-full flex justify-center p-10' >
+        <Loader size={100}/>
+        </div>
       ) : (
         <ChainsTableRows topChains={topChains} />
       )}
