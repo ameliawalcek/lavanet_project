@@ -27,7 +27,7 @@ Follow these steps to set up and run the application locally:
 2. **Install Dependencies**: Navigate to the project directory and install the required dependencies using npm or yarn:
 
 ```bash
-cd lava-top-chains-app
+cd lavanet_project
 npm install
 ```
 
