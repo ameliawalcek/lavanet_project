@@ -1,27 +1,54 @@
-# React + TypeScript + Vite
+# 🌋Lava Protocol Blockchain Leaderboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Lava Protocol Top Chains Web App! This web application showcases the top 10 chains on Lava by the number of relays passed in the Lava Blockchain over the last 20 blocks. It offers an engaging and interactive way to observe the leading chains in terms of relay activity.
 
-Currently, two official plugins are available:
+## Live Leaderboard
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Explore the [Lava Blockchain Leaderboard](https://lava-blockchain-leaderboard.netlify.app/) live, featuring a responsive design for seamless access across devices.
 
-## Expanding the ESLint configuration
+## Background
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Lava Protocol is a decentralized RPC access infrastructure enabling developers to seamlessly interact with RPC providers across various chains. Developers are paired with providers, and upon successful relay completion, providers report the work to the blockchain and request payment.
 
-- Configure the top-level `parserOptions` property like this:
+## How It Works
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+The Lava Protocol Blockchain Leaderboard fetches data from the Lava Blockchain and displays the top chains based on the number of relays passed in the last 20 blocks. It provides a real-time update of the leaderboard as new blocks are added.
+
+## 🚀Getting Started
+Follow these steps to set up and run the application locally: 
+
+1. **Clone the Repository**: Clone this repository to your local machine:
+
+
+```bash
+   git clone https://github.com/ameliawalcek/lavanet_project.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. **Install Dependencies**: Navigate to the project directory and install the required dependencies using npm or yarn:
+
+```bash
+cd lava-top-chains-app
+npm install
+```
+
+2. **Configuration**: Create a `.env` file in the root directory and provide the necessary configuration for the Lava Protocol API. You can see an example in the `.example.env` file:
+
+```bash
+VITE_LAVA_URI=<Lava_Protocol_API_URL>
+```
+
+3. **Run the App**: Start the development server to run the web app:
+```bash
+npm run dev
+```
+
+4. **Access the App**: Ctrl + click on the link displayed in the terminal to open the app in your browser.
+
+
+## Usage
+Upon launching the app, you'll immediately observe a list of the leading chains based on the relay count within the most recent 20 blocks. The data refreshes in real-time as new blocks are added to the Lava Blockchain.
+
+## Contributing
+We enthusiastically welcome contributions to the Lava Protocol Top Chains Web App. To contribute, kindly fork this repository, implement your enhancements, and submit a pull request. Whether you're improving existing features or introducing new ones, your efforts are greatly appreciated!
+##
+Thank you for exploring the Lava Protocol Top Chains Web App. Embark on an exciting journey to discover the relay activities of top chains on the Lava Blockchain. If you have any queries or require assistance, don't hesitate to reach out. Happy coding! 🎉

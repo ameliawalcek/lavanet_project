@@ -114,7 +114,7 @@ const TopChainsTable: React.FC = () => {
         setIsLoading(true); // Show loading indicator
 
         const client = await StargateClient.connect(
-          import.meta.env.VITE_LAVA_URI
+          import.meta.env.VITE_LAVA_URL
         );
         const currentBlockHeight = await client.getHeight();
 
